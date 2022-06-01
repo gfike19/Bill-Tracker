@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @GetMapping
-    public String test () {
-        return "lorem ipsum";
+    public String indexGet() {
+        return "base.html";
     }
 }
