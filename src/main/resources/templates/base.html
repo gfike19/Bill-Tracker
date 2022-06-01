@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Bill Tracker</title>
 </head>
 <body>
-the quick fox jumped over the lazy brown dog.
+    <h1>Bill Tracker</h1>
+    <table>
+        <th th:each="bill: ${bills}">
+            <td th:text="{bill.name}"></td>
+        </th>
+    </table>
+    <br>
+    <form action="/newBill">
+        <input type="submit" value="Add a New Bill" />
+    </form>
 </body>
 </html>
