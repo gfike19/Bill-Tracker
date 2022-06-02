@@ -21,7 +21,6 @@ public abstract class AbstractEntity {
     private UUID id;
 
     @CreatedDate
-//    @PrePersist
     @Column(name="DateCreated")
     private Instant createdDate;
 }
