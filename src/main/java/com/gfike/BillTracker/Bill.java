@@ -3,14 +3,11 @@ package com.gfike.BillTracker;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.time.LocalDate;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name="Bill")
 public class Bill {
 
     @Id
@@ -32,7 +29,7 @@ public class Bill {
 
     @Column(name="DueDate")
     @NotNull
-    private LocalDate dueDate;
+    private int dueDate;
 
     @Column(name="Autopay")
     private boolean autopay;
@@ -40,15 +37,7 @@ public class Bill {
     @Column(name="AutopayMethod")
     private String autopayMethod;
 
-    public Bill(String name, int amount, LocalDate dueDate) {
-        this.name = name;
-        this.amount = amount;
-        this.dueDate = dueDate;
-        this.autopay = false;
-        this.autopayMethod = "N/A";
-    }
-
-    public Bill(String name, int amount, LocalDate dueDate, boolean autopay, String autopayMethod) {
+    public Bill(String name, int amount, int dueDate, boolean autopay, String autopayMethod) {
         this.name = name;
         this.amount = amount;
         this.dueDate = dueDate;
@@ -79,11 +68,11 @@ public class Bill {
         this.amount = amount;
     }
 
-    public LocalDate getDueDate() {
+    public int getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(int dueDate) {
         this.dueDate = dueDate;
     }
 
