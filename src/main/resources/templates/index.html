@@ -3,27 +3,24 @@
 <head th:replace="base :: head">
 </head>
 <body>
+<h1>Bill Tracker</h1>
 <span th:replace="base :: scripts"></span>
 <span th:replace="base :: msg"></span>
-<div class="container">
-    <h1>Bill Tracker</h1>
-    <div th:if="${#lists.isEmpty(bills)}">
-        <p>No bills in database!</p>
-    </div>
-    <div th:unless="${#lists.isEmpty(bills)}">
-        <table>
-            <tr th:each="bill: ${bills}">
-                <td th:text="${bill.name}"></td>
-            </tr>
-        </table>
-    </div>
-    <p>
-    <form action="/newBill">
-        <input type="submit" value="Add a New Bill" class="btn btn-primary"/>
-    </form>
-    </p>
-
+<!--<table th:unless="${#lists.isEmpty(bills)}">-->
+<!--    <tr th:each="bill: ${bills}">-->
+<!--        <td th:text="${bill.name}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<div th:unless="${#lists.isEmpty(bills)}">
+    <table>
+        <tr th:each="bill: ${bills}">
+            <td th:text="${bill.name}"></td>
+        </tr>
+    </table>
 </div>
 
+<form action="/newBill">
+    <input type="submit" value="Add a New Bill" class="btn btn-primary"/>
+</form>
 </body>
 </html>
