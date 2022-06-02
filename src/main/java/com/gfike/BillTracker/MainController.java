@@ -1,5 +1,7 @@
 package com.gfike.BillTracker;
 
+import com.gfike.BillTracker.data.BillDao;
+import com.gfike.BillTracker.models.Bill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

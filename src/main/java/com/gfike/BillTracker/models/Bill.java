@@ -1,4 +1,4 @@
-package com.gfike.BillTracker;
+package com.gfike.BillTracker.models;
 
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
@@ -9,15 +9,6 @@ import java.util.UUID;
 @Entity
 @Table(name="Bill")
 public class Bill {
-
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "ID", updatable = false, nullable = false)
-    private UUID id;
 
     @Column(name="BillName")
     @NotNull
@@ -46,10 +37,6 @@ public class Bill {
     }
 
     public Bill() {
-    }
-
-    public UUID getId() {
-        return id;
     }
 
     public String getName() {
