@@ -1,31 +1,21 @@
 package com.gfike.BillTracker.models;
 
-import com.gfike.BillTracker.data.BillDao;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.hibernate.envers.Audited;
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
+@Audited
 @Table(name="Record")
-public class Record {
-    @Autowired
-    BillDao billDao;
-
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "ID", updatable = false, nullable = false)
-    private UUID id;
+public class Record extends AbstractEntity {
 
     @Column(name="RecordMonth")
-    private String month;
+    private int month;
 
     @Column(name="RecordYear")
     private int year;
@@ -34,18 +24,26 @@ public class Record {
     @Column
     private Set<Bill> bills = new HashSet<>();
 
-    public Record(String month, int year) {
+    public Record(int month, int year, Set<Bill> bills) {
         this.month = month;
         this.year = year;
-        this.setBills();
+        this.bills = bills;
+    }
+
+    public List<Bill> sortBillsByName () {
+        List<Bill> temp = (List<Bill>)this.bills;
+        List<Bill> billsSorted = new ArrayList<>();
+        billsSorted.add(temp.remove(0));
+
+        return billsSorted;
     }
 
     public Set<Bill> getBills() {
         return bills;
     }
 
-    public void setBills() {
-        this.bills = (Set)billDao.findAll();
+    public void setBills(Set bills) {
+        this.bills = bills;
     }
 
     public void addBill (Bill b) {
@@ -59,15 +57,11 @@ public class Record {
     public Record() {
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getMonth() {
+    public int getMonth() {
         return month;
     }
 
-    public void setMonth(String month) {
+    public void setMonth(int month) {
         this.month = month;
     }
 

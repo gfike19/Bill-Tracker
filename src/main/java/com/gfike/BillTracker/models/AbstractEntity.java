@@ -6,11 +6,12 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
+import javax.persistence.MappedSuperclass;
 import java.time.Instant;
 import java.util.UUID;
 
-public abstract class AbstractEntity {
+@MappedSuperclass
+public class AbstractEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -23,4 +24,12 @@ public abstract class AbstractEntity {
     @CreatedDate
     @Column(name="DateCreated")
     private Instant createdDate;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
 }
