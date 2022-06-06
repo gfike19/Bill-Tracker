@@ -1,4 +1,4 @@
-package com.gfike.BillTracker;
+package com.gfike.BillTracker.controllers;
 
 import com.gfike.BillTracker.data.BillDao;
 import com.gfike.BillTracker.models.Bill;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-public class MainController {
+public class MainAndBillController {
     @Autowired
     BillDao billDao;
 
@@ -44,20 +44,15 @@ public class MainController {
 
     @RequestMapping(value = "/newBill", method = RequestMethod.POST)
     public String addBillsPost(HttpServletRequest request, Model model, HttpSession session) {
-        try {
-            String billName = request.getParameter("billName");
-            int billAmount = Integer.parseInt(request.getParameter("billAmount"));
-            int dueDate = Integer.parseInt(request.getParameter("dueDate"));
-            boolean autopay = Boolean.parseBoolean((request.getParameter("autopay")));
-            String autopayMethod = request.getParameter("autopayMethod");
-            Bill b = new Bill(billName, billAmount, dueDate, autopay, autopayMethod);
-            billDao.save(b);
-        } catch (Exception e) {
-            String msg = e.toString();
-            model.addAttribute("msg", msg);
-            session.setAttribute("msg", msg);
-            return "redirect:/newBill";
-        }
+
+        String billName = request.getParameter("billName");
+        int billAmount = Integer.parseInt(request.getParameter("billAmount"));
+        int dueDate = Integer.parseInt(request.getParameter("dueDate"));
+        boolean autopay = Boolean.parseBoolean((request.getParameter("autopay")));
+        String autopayMethod = request.getParameter("autopayMethod");
+        Bill b = new Bill(billName, billAmount, dueDate, autopay, autopayMethod);
+        billDao.save(b);
+
         String msg = "Bill has successfully added to the database!";
         model.addAttribute("msg", msg);
         session.setAttribute("msg", msg);

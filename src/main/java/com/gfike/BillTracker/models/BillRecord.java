@@ -3,16 +3,13 @@ package com.gfike.BillTracker.models;
 
 import org.hibernate.envers.Audited;
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Audited
 @Table(name="Record")
-public class Record extends AbstractEntity {
+public class BillRecord extends AbstractEntity {
 
     @Column(name="RecordMonth")
     private int month;
@@ -24,23 +21,17 @@ public class Record extends AbstractEntity {
     @Column
     private Set<Bill> bills = new HashSet<>();
 
-    public Record(int month, int year, Set<Bill> bills) {
+    public BillRecord(int month, int year, Set<Bill> bills) {
         this.month = month;
         this.year = year;
         this.bills = bills;
     }
 
-    public List<Bill> sortBillsByName () {
-        List<Bill> temp = (List<Bill>)this.bills;
-        List<Bill> billsSorted = new ArrayList<>();
-        billsSorted.add(temp.remove(0));
-
-        return billsSorted;
-    }
-
     public Set<Bill> getBills() {
         return bills;
     }
+
+    //TODO make view bill method
 
     public void setBills(Set bills) {
         this.bills = bills;
@@ -54,7 +45,7 @@ public class Record extends AbstractEntity {
         this.bills.remove(b);
     }
 
-    public Record() {
+    public BillRecord() {
     }
 
     public int getMonth() {
