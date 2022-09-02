@@ -1,14 +1,11 @@
 package com.gfike.BillTracker.models;
 
 import com.sun.istack.NotNull;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name="Bill")
-public class Bill {
+public class Bill extends AbstractEntity {
 
     @Column(name="BillName")
     @NotNull

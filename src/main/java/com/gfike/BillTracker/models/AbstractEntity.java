@@ -1,27 +1,20 @@
 package com.gfike.BillTracker.models;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedDate;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import java.time.Instant;
-import java.util.UUID;
-
+@MappedSuperclass
 public abstract class AbstractEntity {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "ID", updatable = false, nullable = false)
-    private UUID id;
 
-    @CreatedDate
-//    @PrePersist
-    @Column(name="DateCreated")
-    private Instant createdDate;
+    private long id;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "ID", updatable = false, nullable = false)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
