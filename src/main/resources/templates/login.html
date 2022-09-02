@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:bill="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: head">
+</head>
+<body>
+  <div class="container">
+    <form method="post">
+      <div class="form-group">
+        <label for="userName" class="form-label">Username: </label>
+        <input type="text" id="userName" name="userName" required/>
+      </div>
+      <input type="submit" class="btn btn-primary" name="Login" id="Login"/>
+    </form>
+    <form method="post" action="/newUser">
+      <div class="form-group">
+        <label for="newUserName" class="form-label">New user? Enter phone number here to create an account: </label>
+        <input type="text" name="newUserName" id="newUserName" required>
+      </div>
+      <input type="submit" class="btn btn-secondary" name="Create Account" id="Create Account"/>
+    </form>
+  </div>
+</body>
+</html>

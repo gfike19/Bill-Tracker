@@ -1,10 +1,12 @@
 package com.gfike.BillTracker.models;
 
 import com.sun.istack.NotNull;
+import org.hibernate.envers.Audited;
 import javax.persistence.*;
 
 @Entity
 @Table(name="Bill")
+@Audited
 public class Bill extends AbstractEntity {
 
     @Column(name="BillName")

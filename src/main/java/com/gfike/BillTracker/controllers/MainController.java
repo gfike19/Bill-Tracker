@@ -1,4 +1,4 @@
-package com.gfike.BillTracker;
+package com.gfike.BillTracker.controllers;
 
 import com.gfike.BillTracker.data.BillDao;
 import com.gfike.BillTracker.models.Bill;

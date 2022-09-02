@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="base :: head">
 <body>
-<span th:replace="base :: scripts"></span>
-<span th:replace="base :: msg"></span>
+<div class="container">
+    <span th:replace="base :: scripts"></span>
+    <span th:replace="base :: msg"></span>
+    <h1>New Bill</h1>
     <form method="post">
         <div class="form-group">
             <label for="billName" class="form-label">Bill Name: </label>
@@ -28,7 +30,8 @@
         <input type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary"/>
     </form>
     <form action="/">
-        <input type="submit" value="Back" class="btn btn-default"/>
+        <input type="submit" value="Back" class="btn btn-secondary"/>
     </form>
+</div>
 </body>
 </html>
