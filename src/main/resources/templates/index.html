@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:bill="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="base :: head">
 </head>
 <body>
@@ -17,10 +17,16 @@
             </tr>
         </table>
     </div>
-
+    <p>
     <form action="/newBill">
         <input type="submit" value="Add a New Bill" class="btn btn-primary"/>
     </form>
+
+    <form action="/newExpenditure">
+        <input type="submit" value="Create a New Expenditure Report" class="btn btn-secondary"/>
+    </form>
+    </p>
+
 </div>
 </body>
 </html>
