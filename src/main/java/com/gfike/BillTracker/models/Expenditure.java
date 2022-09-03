@@ -5,8 +5,6 @@ import org.hibernate.envers.Audited;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 @Entity
 @Table(name="Expenditure")
@@ -21,14 +19,14 @@ public class Expenditure extends AbstractEntity {
     @NotNull
     private int month;
 
-    @Column(name="Bills", columnDefinition = "JSON")
+    @Column(name="Bills")
     @NotNull
-    private HashMap<Bill, Boolean> bills;
+    private String bills;
 
     public Expenditure() {
     }
 
-    public Expenditure(int yr, int month, HashMap<Bill, Boolean> bills) {
+    public Expenditure(int yr, int month, String bills) {
         this.yr = yr;
         this.month = month;
         this.bills = bills;
@@ -50,11 +48,11 @@ public class Expenditure extends AbstractEntity {
         this.month = month;
     }
 
-    public HashMap<Bill, Boolean> getBills() {
+    public String getBills() {
         return bills;
     }
 
-    public void setBills(HashMap<Bill, Boolean> bills) {
+    public void setBills(String bills) {
         this.bills = bills;
     }
 }

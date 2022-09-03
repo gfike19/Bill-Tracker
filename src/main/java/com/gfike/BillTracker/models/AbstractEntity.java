@@ -8,7 +8,7 @@ public abstract class AbstractEntity {
     private long id;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     @Column(name = "ID", updatable = false, nullable = false)
     public Long getId() {
         return id;

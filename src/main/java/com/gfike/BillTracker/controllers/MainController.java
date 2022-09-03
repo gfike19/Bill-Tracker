@@ -34,7 +34,6 @@ public class MainController {
             session.removeAttribute("msg");
         }
 
-//        List<Bill> bills = billDao.findAll();
         List<Expenditure> e = (List<Expenditure>) expenditureDao.findAll();
         model.addAttribute("bills", e);
         model.addAttribute("msg", msg);
@@ -82,13 +81,13 @@ public class MainController {
     @PostMapping(value="/newExpenditure")
     public String newExpenditurePost (HttpServletRequest request, Model model, HttpSession session) {
         try {
-            int yr = Integer.parseInt(request.getParameter("year"));
+            int yr = Integer.parseInt(request.getParameter("yr"));
             int month = Integer.parseInt(request.getParameter("month"));
             ArrayList <Bill> allBills = (ArrayList<Bill>) billDao.findAll();
-            HashMap<Bill, Boolean> bills = new HashMap<>();
+            String bills = "";
 
             for(Bill b : allBills) {
-                bills.put(b, false);
+                bills += "(" + b.getId() + "," + "0)";
             }
 
             Expenditure e = new Expenditure(yr, month, bills);
