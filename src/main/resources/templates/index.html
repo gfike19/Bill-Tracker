@@ -7,26 +7,19 @@
     <h1>Bill Tracker</h1>
     <span th:replace="base :: scripts"></span>
     <span th:replace="base :: msg"></span>
-<!--    <div th:unless="${#lists.isEmpty(bills) == false}">-->
-<!--        No bills in database!-->
-<!--    </div>-->
-<!--    <div th:unless="${#lists.isEmpty(bills)}">-->
-<!--        <table>-->
-<!--            <tr th:each="bill: ${bills}">-->
-<!--                <td th:text="${bill.name}"></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </div>-->
-    <p>
-    <form action="/newBill">
-        <input type="submit" value="Add a New Bill" class="btn btn-primary"/>
-    </form>
+    <div class="btn-group">
+        <form action="/newBill">
+            <input type="submit" value="Add a New Bill" class="btn btn-primary"/>
+        </form>
 
-    <form action="/newExpenditure">
-        <input type="submit" value="Create a New Expenditure Report" class="btn btn-secondary"/>
-    </form>
-    </p>
+        <form action="/newExpenditure">
+            <input type="submit" value="Create a New Expenditure Report" class="btn btn-secondary"/>
+        </form>
 
+        <form action="/editBill">
+            <input type="submit" value="Edit Bill/s" class="btn btn-info"/>
+        </form>
+    </div>
 </div>
 </body>
 </html>

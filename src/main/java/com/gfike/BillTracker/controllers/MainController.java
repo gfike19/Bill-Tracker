@@ -103,4 +103,11 @@ public class MainController {
         session.setAttribute("msg", msg);
         return "redirect:/";
     }
+
+    @GetMapping(value="/editBill")
+    public String editBillGet (Model model) {
+        ArrayList <Bill> allBills = (ArrayList<Bill>) billDao.findAll();
+        model.addAttribute("allBills", allBills);
+        return "editBill";
+    }
 }
